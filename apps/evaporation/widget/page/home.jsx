@@ -1,4 +1,7 @@
-const { Button } = VM.require("buildhub.near/widget/components");
+const { Button } = VM.require("buildhub.near/widget/components") || {
+  Button: () => <></>,
+};
+
 const imageUrl =
   props.imageUrl ??
   JSON.stringify(state.image.url) ??
@@ -48,6 +51,5 @@ return (
         </Button>
       </Content>
     </HeaderContainer>
-    <Widget src="hack.near/widget/src.footer" />
   </>
 );

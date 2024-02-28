@@ -30,7 +30,11 @@ const Header = ({ page, routes, ...props }) => (
 );
 
 const Footer = (props) => {
-  return <></>;
+  return (
+    <>
+      <Widget src="hack.near/widget/src.footer" />
+    </>
+  );
 };
 
 function AppLayout({ routes, page, children, ...props }) {

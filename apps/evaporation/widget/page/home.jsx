@@ -1,27 +1,13 @@
-const { Button } = VM.require("buildhub.near/widget/components") || {
-  Button: () => <></>,
+const { href } = VM.require("buildhub.near/widget/lib.url") || {
+  href: () => {},
 };
 
-const imageUrl =
-  props.imageUrl ??
-  JSON.stringify(state.image.url) ??
-  "https://builders.mypinata.cloud/ipfs/QmQmKGGJXhkhGrTbE4MgJ3G1wUUu8eo7mNKwRSCB5tihCw";
-const HeaderContainer = styled.div`
-  width: 100%;
-  position: relative;
-
-  padding: 9.375rem 3rem;
-
-  @media screen and (max-width: 768px) {
-    padding: 9.375rem 1.5rem;
-  }
-`;
-
-const Logo = styled.img`
-  height: 55px;
-  object-fit: cover;
-  margin: 8px;
-`;
+const { Button, Container } = VM.require(
+  "/*__@appAccount__*//widget/components"
+) || {
+  Button: () => <></>,
+  Container: () => <></>,
+};
 
 const Content = styled.div`
   display: flex;
@@ -33,23 +19,31 @@ const Content = styled.div`
   margin: 0 auto;
 `;
 
+const NavLink = ({ children, to }) => {
+  return (
+    <Link
+      key={to}
+      to={href({
+        widgetSrc: "/*__@appAccount__*//widget/app",
+        params: {
+          page: to,
+        },
+      })}
+    >
+      {children}
+    </Link>
+  );
+};
+
 return (
-  <>
-    <HeaderContainer>
-      <Content>
-        <Logo src={imageUrl} />
-        <Button variant="primary">
-          <a
-            style={{
-              textDecoration: "none",
-              color: "#000",
-            }}
-            href={props.buttonLink ?? "https://nearbuilders.org"}
-          >
-            <b>{props.buttonText ?? "START"}</b>
-          </a>
-        </Button>
-      </Content>
-    </HeaderContainer>
-  </>
+  <Container>
+    <Content>
+      <NavLink to="new">
+        <Button>New Game</Button>
+      </NavLink>
+      <NavLink to="view">
+        <Button>View Game</Button>
+      </NavLink>
+    </Content>
+  </Container>
 );

@@ -25,6 +25,8 @@ return {
       {children}
     </div>
   ),
+  Page: <div className="page">{children}</div>,
+  Post: <div className="post">{children}</div>,
   Layout: ({ variant, blocks, children }) => {
     switch (variant) {
       case "standard": {

@@ -6,9 +6,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "bos-workspace dev",
-    "build": "bos-workspace build"
+    "build": "bos-workspace build",
+    "bw": "bos-workspace"
   },
   "devDependencies": {
-    "bos-workspace": "^0.0.1-alpha.4"
+    "bos-workspace": "^0.0.1-alpha.5"
   }
 }
